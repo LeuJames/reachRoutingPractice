@@ -1,17 +1,29 @@
-import React from 'react';
-import {Router } from '@reach/router';
+import React, {useState} from 'react';
+import {Router, navigate } from '@reach/router';
 import './App.css';
-import Home from './Components/Home';
-import SingleProp from './Components/SingleProp';
-import TripleProp from './Components/TripleProp';
+import Search from './Components/Search';
+import Display from './Components/Display';
+import axios from 'axios';
 
 function App() {
+  const [responseData, setResponseData] = useState(null);
+
+  const handleSearch = (typeInput, idInput) => {
+    navigate(`/${typeInput}/${idInput}`);
+    axios.get(`https://swapi.dev/api/${typeInput}/${idInput}/`)
+    .then(response=>{setResponseData(response.data)})
+    .catch(err => console.log(err));
+  }
+
+
   return (
     <div className="App">
+      <Search search={handleSearch}/>
       <Router>
-        <Home path='/home'>Home</Home>
-        <SingleProp path='/:prop'>Number</SingleProp>
-        <TripleProp path='/:word/:color1/:color2'>Hello</TripleProp>
+        <Display 
+          data = {responseData}
+          path='/:type/:id/'
+        />
       </Router>
     </div>
   );
