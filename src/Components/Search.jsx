@@ -6,7 +6,8 @@ const Search = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.search(typeInput,idInput);
+    let urlSearch = `/${typeInput}/${idInput}`;
+    props.search(urlSearch);
     setIdInput('');
     setTypeInput('');
   }
