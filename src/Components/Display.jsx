@@ -29,7 +29,9 @@ const Display = ({apiData, type, navToPlanet}) => {
           <p>Skin Color: {apiData.skin_color}</p>
           <p>Home Planet: <button onClick={handleClick}>{planetData.name}</button> </p> 
         </div>
-        :
+        : null
+      }
+      {type === 'planets' ?
         <div>
           <h4>{apiData.name}</h4>
           <p>Climate: {apiData.climate}</p>
@@ -37,6 +39,18 @@ const Display = ({apiData, type, navToPlanet}) => {
           <p>Surface Water: {apiData.surface_water}</p>
           <p>Population: {apiData.population}</p> 
         </div>
+        : null
+      }
+          {type === 'starships' ?
+        <div>
+          <h4>{apiData.name}</h4>
+          <p>Model: {apiData.model}</p>
+          <p>Manufacturer: {apiData.manufacturer}</p>
+          <p>Cost in Imperial Credits: {apiData.cost_in_credits}</p>
+          <p>Crew: {apiData.crew}</p> 
+          <p>Passengers: {apiData.passengers}</p> 
+        </div>
+        : null
       }
     </>
   )

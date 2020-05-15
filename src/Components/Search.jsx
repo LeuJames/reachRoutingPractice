@@ -19,6 +19,7 @@ const Search = (props) => {
           <option value="none">Select a type</option>
           <option value="people">People</option>
           <option value="planets">Planet</option>
+          <option value="starships">Starship</option>
         </select>
         &nbsp; ID: &nbsp;
         <input type="text" placeholder="ID #" value={idInput} onChange = { (e) => setIdInput(e.target.value)} required/>
